@@ -1,0 +1,29 @@
+
+
+service: pruebaservice
+
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: dev
+  profile: pruebaservice
+  region: us-east-1
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /obtener
+          method: get
+      
+  enviar:
+    handler: handler.enviar
+    events:
+      - http: 
+          path: /enviar
+          method: post      
